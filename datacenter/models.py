@@ -49,8 +49,8 @@ def format_duration(duration: timedelta) -> str:
 def is_visit_long(visit: Visit, minutes=60) -> bool:
     if not (visit.leaved_at is None):
         time_delta = visit.leaved_at - visit.entered_at
-        seconds = time_delta.total_seconds()
-        spent_time_in_minutes = seconds // 60
-        return spent_time_in_minutes > minutes
     else:
-        return False
+        time_delta = localtime() - visit.entered_at
+    seconds = time_delta.total_seconds()
+    spent_time_in_minutes = seconds // 60
+    return spent_time_in_minutes > minutes
