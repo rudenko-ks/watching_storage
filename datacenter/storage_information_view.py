@@ -16,11 +16,11 @@ def storage_information_view(request):
             'who_entered': visit.passcard.owner_name,
             'entered_at': entered_at,
             'duration': format_duration(spent_time),
-            'is_strange': is_visit_long(visit, minutes=12)
+            'is_strange': is_visit_long(visit, minutes=60)
             }
         non_closed_visits.append(user_inside)
 
     context = {
-        'non_closed_visits': non_closed_visits,  # не закрытые посещения
+        'non_closed_visits': non_closed_visits,
     }
     return render(request, 'storage_information.html', context)
