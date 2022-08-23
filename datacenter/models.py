@@ -42,9 +42,9 @@ def get_duration(visit: Visit) -> timedelta:
 
 def format_duration(duration: timedelta) -> str:
     seconds = duration.total_seconds()
-    hours = int(seconds // 3600)
-    minutes = int((seconds // 60) % 60)
-    return f'{hours}ч {minutes}мин'
+    hours = seconds // 3600
+    minutes = (seconds // 60) % 60
+    return f'{hours:.0f}ч {minutes:.0f}мин'
 
 
 def is_visit_long(visit: Visit, minutes=60) -> bool:
